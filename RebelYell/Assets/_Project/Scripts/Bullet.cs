@@ -11,8 +11,7 @@ public class Bullet : MonoBehaviour, IDealDamage
     {
         ITakeDamage dam = collision.collider.GetComponent<ITakeDamage>();
         if (dam != null)
-        {
             dam.TakeDamage(damage);
-        }
+        Destroy(this.gameObject);
     }
 }
