@@ -14,4 +14,8 @@ public class Bullet : MonoBehaviour, IDealDamage
             dam.TakeDamage(damage);
         Destroy(this.gameObject);
     }
+
+    public void DealDamage()
+    {
+    }
 }
