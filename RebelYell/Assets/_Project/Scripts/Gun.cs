@@ -19,16 +19,10 @@ public class Gun : MonoBehaviour
         {
             GameObject bullet = Instantiate(prefab, barrelEnd.transform.position, Random.rotation);
             bullet.GetComponent<Rigidbody>().AddForce(barrelEnd.transform.forward * speed);
-            bullet.GetComponent<IDealDamage>().damage = 5;
+            bullet.GetComponent<IDealDamage>().damage = damage;
             canFire = false;
             StartCoroutine(Wait());
         }
-    }
-
-    public void Update()
-    {
-        if (Input.GetMouseButton(0))
-            Fire();
     }
 
     IEnumerator Wait()

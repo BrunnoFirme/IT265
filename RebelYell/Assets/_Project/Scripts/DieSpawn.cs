@@ -13,7 +13,6 @@ public class DieSpawn : MonoBehaviour
     {
         if (spawnTransform == null)
             spawnTransform = this.transform;
-
         Instantiate(spawnObject, spawnTransform.position, spawnTransform.rotation);
     }
 
@@ -27,5 +26,4 @@ public class DieSpawn : MonoBehaviour
     {
         die.OnDeath -= Spawn;
     }
-
 }

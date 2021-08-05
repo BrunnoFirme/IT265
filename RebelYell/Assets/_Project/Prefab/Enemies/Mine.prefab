@@ -165,8 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c97e3c8347197409e15109928e8a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnObject: {fileID: 3881466185885857009, guid: f019937371896f74d8d95e3f338c791f, type: 3}
+  spawnObject: {fileID: 3335904371520173475, guid: 5d39776aae648b04f9e217231f2927b3, type: 3}
   spawnTransform: {fileID: 0}
+  damage: 5
 --- !u!114 &4649721222720770168
 MonoBehaviour:
   m_ObjectHideFlags: 0
