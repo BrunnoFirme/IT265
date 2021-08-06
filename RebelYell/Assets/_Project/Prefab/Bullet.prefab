@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c36bc22ac4053418a5b3cd3916aace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignoreTag: Enemy
 --- !u!96 &6220316700215409390
 TrailRenderer:
   serializedVersion: 2
