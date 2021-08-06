@@ -5,8 +5,8 @@ using UnityEngine;
 public class Sentry : MonoBehaviour, IHaveTarget
 {
     public Transform rotate;
-    public string targetTag = "Player";
     public float turnSpeed = 0.1f;
+    public bool locked = true;
     GameObject _target;
     GameObject IHaveTarget.target { get => _target; set => _target = value; }
     Gun gun;
@@ -22,21 +22,6 @@ public class Sentry : MonoBehaviour, IHaveTarget
     {
         if (_target != null)
             Look();
-        Quaternion rotation = rotate.transform.localRotation;
-        rotate.transform.rotation = Quaternion.Lerp(rotate.transform.localRotation, desriedLocation, turnSpeed * Time.deltaTime);
-        rotate.transform.rotation = Quaternion.Euler(0, rotate.transform.eulerAngles.y, 0);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == targetTag)
-            _target = other.gameObject;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == targetTag)
-            _target = null;
     }
 
     void Look()
@@ -46,5 +31,8 @@ public class Sentry : MonoBehaviour, IHaveTarget
         desriedLocation = rotate.transform.rotation;
         rotate.rotation = rot;
         gun.Fire();
+        rotate.transform.rotation = Quaternion.Lerp(rotate.transform.rotation, desriedLocation, turnSpeed * Time.deltaTime);
+        if (locked)
+            rotate.transform.rotation = Quaternion.Euler(0, rotate.transform.eulerAngles.y, 0);
     }
 }

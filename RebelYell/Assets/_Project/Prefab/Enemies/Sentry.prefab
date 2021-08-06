@@ -341,6 +341,7 @@ GameObject:
   - component: {fileID: 2548693986919693620}
   - component: {fileID: 2548693986919693627}
   - component: {fileID: 2548693986919693626}
+  - component: {fileID: -1864088412692240791}
   m_Layer: 0
   m_Name: Sentry
   m_TagString: Untagged
@@ -376,8 +377,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotate: {fileID: 2548693985451371980}
-  targetTag: Player
   turnSpeed: 6
+  locked: 1
 --- !u!135 &2548693986919693617
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -484,6 +485,18 @@ MonoBehaviour:
   speed: 7
   prefab: {fileID: 2417852229492146439, guid: d09de74f356757f48b816d7c8c452a76, type: 3}
   barrelEnd: {fileID: 2548693986031652433}
+--- !u!114 &-1864088412692240791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2548693986919693612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7e02185a57306438c3eab03c049d38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2548693986943570921
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,8 +9,6 @@ public class Mine : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == triggerTag)
-        {
             this.GetComponent<IDie>().Die();
-        }
     }
 }
