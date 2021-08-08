@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float terminalVelocity = -120f;
 
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    public float groundDistance = 0.1f;
     public LayerMask groundMask;
     [Range(0,1)] public float pushablity = 0.5f;
     public float friction = 0.5f;

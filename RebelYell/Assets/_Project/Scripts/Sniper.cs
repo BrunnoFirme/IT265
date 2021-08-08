@@ -11,12 +11,11 @@ public class Sniper : MonoBehaviour, IHaveTarget
     GameObject _target;
     GameObject IHaveTarget.target { get => _target; set => _target = value; }
     Gun gun;
-    LineRenderer lineRenderer;
+    public LineRenderer lineRenderer;
 
     void Start()
     {
         gun = this.GetComponent<Gun>();
-        lineRenderer = this.GetComponent<LineRenderer>();
         SetEndPos(this.transform.position);
     }
 
@@ -31,6 +30,10 @@ public class Sniper : MonoBehaviour, IHaveTarget
     {
         if (_target != null)
             Look();
+        else
+        {
+            SetEndPos(this.transform.position);
+        }
     }
 
     void Look()
