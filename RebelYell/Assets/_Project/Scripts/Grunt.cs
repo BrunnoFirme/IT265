@@ -37,13 +37,11 @@ public class Grunt : MonoBehaviour, IHaveTarget
 
     void MoveToPlayer()
     {
-        navMeshAgent.isStopped = false;
         navMeshAgent.SetDestination(_target.transform.position);
     }
 
     void Shoot()
     {
-        navMeshAgent.isStopped = true;
         this.transform.LookAt(_target.transform.position);
         this.transform.rotation = Quaternion.Euler(0, this.transform.eulerAngles.y, 0);
         gun.Fire();
