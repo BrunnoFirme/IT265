@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent),typeof(Gun))]
-public class Grunt : MonoBehaviour, IHaveTarget
+public class Grunt : MonoBehaviour, IHaveTarget, IStun
 {
     GameObject IHaveTarget.target { get => _target; set => _target = value; }
     GameObject _target;
 
     NavMeshAgent navMeshAgent;
     Gun gun;
+    bool stuned = false;
 
     public int ShootDistance = 20;
 
@@ -28,7 +29,11 @@ public class Grunt : MonoBehaviour, IHaveTarget
 
     void AITHoughtLoop()
     {
-
+        if (stuned)
+        {
+            navMeshAgent.SetDestination(this.transform.position);
+            return;
+        }
         if (Vector3.Distance(this.transform.position, _target.transform.position) < ShootDistance && HasSightLine())
             Shoot();
         else
@@ -59,5 +64,17 @@ public class Grunt : MonoBehaviour, IHaveTarget
                 return true;
         }
         return false;
+    }
+
+    public void Stun(float amount)
+    {
+        StartCoroutine(Wait(amount));
+    }
+
+    IEnumerator Wait(float amount)
+    {
+        stuned = true;
+        yield return new WaitForSeconds(amount);
+        stuned = false;
     }
 }

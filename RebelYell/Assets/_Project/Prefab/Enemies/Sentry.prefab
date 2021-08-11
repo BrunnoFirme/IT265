@@ -481,8 +481,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
-  durationBetweenBullets: 0.5
-  speed: 7
+  durationBetweenBullets: 1
+  speed: 5
   prefab: {fileID: 2417852229492146439, guid: d09de74f356757f48b816d7c8c452a76, type: 3}
   barrelEnd: {fileID: 2548693986031652433}
 --- !u!114 &-1864088412692240791

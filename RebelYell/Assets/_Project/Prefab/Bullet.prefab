@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ignoreTag: Enemy
+  deadPrefab: {fileID: 996581922067917978, guid: e02f9bc0a592c8e4083af5a77713ab7b, type: 3}
 --- !u!96 &6220316700215409390
 TrailRenderer:
   serializedVersion: 2

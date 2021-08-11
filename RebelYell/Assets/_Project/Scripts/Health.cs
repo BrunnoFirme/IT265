@@ -11,12 +11,14 @@ public class Health : MonoBehaviour
     int _health = 1;
     ITakeDamage takeDamage;
     IDie die;
+    public event Action HealthUpdate = delegate {};
 
     private void OnEnable()
     {
         takeDamage = this.GetComponent<ITakeDamage>();
         die = this.GetComponent<IDie>();
         takeDamage.OnTakeDamage += TakeDamage;
+        _health = maxHealth;
     }
 
     private void OnDisable()
@@ -24,14 +26,10 @@ public class Health : MonoBehaviour
         takeDamage.OnTakeDamage -= TakeDamage;
     }
 
-    void Start()
-    {
-        _health = maxHealth;
-    }
-
     public void TakeDamage(int damage)
     {
         _health -= damage;
+        HealthUpdate();
         if (_health <= 0)
             die.Die();
     }

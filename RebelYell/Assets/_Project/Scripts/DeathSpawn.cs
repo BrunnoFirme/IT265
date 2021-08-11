@@ -8,6 +8,8 @@ public class DeathSpawn : MonoBehaviour
     public GameObject spawnObject;
     IDie death;
 
+    public bool MatchRotation = false;
+
     private void OnEnable()
     {
         death = this.GetComponent<IDie>();
@@ -21,6 +23,9 @@ public class DeathSpawn : MonoBehaviour
 
     void Spawn()
     {
-        Instantiate(spawnObject, this.transform.position, spawnObject.transform.rotation);
+        if (!MatchRotation)
+            Instantiate(spawnObject, this.transform.position, spawnObject.transform.rotation);
+        else
+            Instantiate(spawnObject, this.transform.position, this.transform.rotation);
     }
 }
