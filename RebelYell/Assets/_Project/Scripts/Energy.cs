@@ -9,6 +9,7 @@ public class Energy : MonoBehaviour
     public int charge { get { return _charge; } set { _charge = value; } }
     public int maxCharge = 100;
     int _charge;
+    int index = 0;
 
     [SerializeField] Ability[] abilities;
     public event Action OnEnergyUse = delegate { };
@@ -17,6 +18,12 @@ public class Energy : MonoBehaviour
     public GameObject NoEnergySound;
     public GameObject UseFireWallSound;
     public GameObject UseDDOSSound;
+    public Image abilityImage;
+
+    public void UpdateEnergy()
+    {
+        OnEnergyUse();
+    }
 
     private void OnEnable()
     {
@@ -25,7 +32,25 @@ public class Energy : MonoBehaviour
 
     private void Update()
     {
-        CheckInputs();
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (_charge >= abilities[index].cost)
+            {
+                if (abilities[index].gun != null)
+                    abilities[index].gun.Fire();
+                charge -= abilities[index].cost;
+                OnEnergyUse();
+
+                if (index == 1)
+                    Instantiate(DDOS, this.transform.position, Quaternion.identity);
+            }
+            else
+                Spawn(NoEnergySound);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            NextIndex();
+        //CheckInputs();
     }
 
     void CheckInputs()
@@ -65,6 +90,14 @@ public class Energy : MonoBehaviour
     void Spawn(GameObject objectToSpawn)
     {
         Instantiate(objectToSpawn, this.transform.position, Quaternion.identity);
+    }
+
+    void NextIndex()
+    {
+        index++;
+        if (index >= abilities.Length)
+            index = 0;
+        abilityImage.sprite = abilities[index].abilityImage;
     }
 }
 
